@@ -1,0 +1,15 @@
+# .github/workflows/ci.yml
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Deploy
+        run: |
+          curl "https://api.render.com/deploy/srv-cl17900p2gis73d8v5b0?key=4B7pkSCJ98A"
