@@ -4,15 +4,17 @@ import axios from "axios";
 import robot from "./assets/RobotAtMechanexus.png";
 
 interface ApiResponse {
-  chip: string;
+  chipid: number;
+  chipname: string;
+  chipuse: string;
 }
 
 function App() {
   const [count, setCount] = useState<number>(0);
-  const [data, setData] = useState<ApiResponse | null>(null);
+  const [data, setData] = useState<ApiResponse[] | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
-  const setDataCallback = useCallback((data: ApiResponse | null) => {
+  const setDataCallback = useCallback((data: ApiResponse[] | null) => {
     setData(data);
   }, []);
 
@@ -45,7 +47,7 @@ function App() {
           data && (
             <div>
               <h2>Chip of the day:</h2>
-              <p>{data.chip}</p>
+              <p>{data[2].chipname}</p>
             </div>
           )
         )}
