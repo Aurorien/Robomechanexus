@@ -16,6 +16,7 @@ function App() {
 
   const setDataCallback = useCallback((data: ApiResponse[] | null) => {
     setData(data);
+    console.log("data", data);
   }, []);
 
   useEffect(() => {
@@ -47,7 +48,8 @@ function App() {
           data && (
             <div>
               <h2>Chip of the day:</h2>
-              <p>{data[2].chipname}</p>
+              <p>Name: {data[2].chipname}</p>
+              <p>Use: {data[2].chipuse}</p>
             </div>
           )
         )}
