@@ -1,36 +1,10 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-  color: #c2d7e3;
-  text-shadow: 5px 5px 10px #030303, -5px -5px 10px #020202;
-  background-color: rgb(8, 28, 44, 0.95);
-  border-color: rgb(64, 104, 139, 0.8);
-  border-radius: 20%;
-  border-style: dashed;
-  padding: 5px 15px 12px 15px;
-}
-
-.chip-of-the-day {
-  background-color: #030303;
+.nav-ul {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 0 100px 0 100px;
 }
 
-.chip-of-the-day p {
-  background-color: rgb(128, 255, 212, 0.8);
-  border-radius: 100%;
-  color: #000000;
-  padding: 10px;
-  width: 100%;
-}
-
-img {
-  width: 50%;
+a {
+  color: rgb(212, 212, 247);
+  text-decoration: none;
 }

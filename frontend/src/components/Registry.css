@@ -1,0 +1,56 @@
+.add-chip {
+  background-color: rgb(20, 20, 20, 0.9);
+  max-width: max-content;
+  padding: 10px;
+  border-radius: 10%;
+}
+
+.add-chip-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  padding-bottom: 20px;
+}
+
+img {
+  max-height: 520px;
+}
+
+label {
+  padding: 5px 30px 7px 10px;
+  background-color: rgb(20, 20, 20);
+}
+
+li {
+  color: aliceblue;
+  background-color: black;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.reg-list {
+  display: flex;
+  background-color: rgb(66, 104, 130);
+  flex-direction: column;
+  max-width: max-content;
+  margin-bottom: 20px;
+}
+
+.reg-list-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.reg-ol {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0 40px 40px 40px;
+  text-align: left;
+}
+
+span {
+  margin-left: 18px;
+}

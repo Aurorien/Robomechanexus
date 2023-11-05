@@ -1,0 +1,46 @@
+#root {
+  text-align: center;
+  background-image: url(../assets/Robomechanexus.png);
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+.home-title {
+  line-height: 1.1;
+  color: #c2d7e3;
+  text-shadow: 5px 5px 10px #030303, -5px -5px 10px #020202;
+  background-color: rgb(8, 28, 44, 0.95);
+  border-color: rgb(64, 104, 139, 0.8);
+  border-radius: 20%;
+  border-style: dashed;
+  padding: 5px 175px 12px 175px;
+}
+
+.chip-of-the-day {
+  background-color: #030303;
+  border-radius: 20%;
+  padding: 10px 40px;
+}
+
+.chip-of-the-day p {
+  background-color: rgb(128, 255, 212, 0.8);
+  border-radius: 100%;
+  color: #000000;
+  padding: 10px;
+  width: 100%;
+}
+
+.chip-of-the-day,
+.home-title {
+  margin-bottom: 30px;
+}
+
+.chip-of-the-day,
+.home-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+img {
+  width: 50%;
+}

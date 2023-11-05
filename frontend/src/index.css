@@ -6,7 +6,6 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #1d9c93;
-  background-image: url(./assets/Robomechanexus.png);
   background-size: 100%;
 
   font-synthesis: none;
@@ -15,10 +14,12 @@
 
 body {
   margin: 0;
+  padding: 0;
   display: flex;
   justify-content: center;
   min-width: 320px;
   min-height: 100vh;
+  max-width: 100vw;
 }
 
 button {
@@ -38,4 +39,8 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+ul {
+  list-style-type: none;
 }
