@@ -14,10 +14,10 @@ function Root() {
     <>
       <nav>
         <ul className="nav-ul">
-          <li>
+          <li className="nav-li">
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li className="nav-li">
             <Link to="/registry">Registry</Link>
           </li>
         </ul>

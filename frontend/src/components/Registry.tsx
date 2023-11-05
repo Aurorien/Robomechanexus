@@ -98,8 +98,8 @@ function Home() {
                 <ol className="reg-ol">
                   {data.map((data) => (
                     <li key={data.chipid}>
-                      Name: {data.chipname} <span>Use: {data.chipuse}</span>
-                      <span>Type: {data.itemtypename}</span>
+                      <span className="reg-li-label">Name:</span> {data.chipname} <span><span className="reg-li-label">Use:</span> {data.chipuse}</span>
+                      <span><span className="reg-li-label">Type:</span> {data.itemtypename}</span>
                     </li>
                   ))}
                 </ol>
