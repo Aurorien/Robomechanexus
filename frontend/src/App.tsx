@@ -1,62 +1,46 @@
-import { useEffect, useState, useCallback } from "react";
 import "./App.css";
-import axios from "axios";
-import robot from "./assets/RobotAtMechanexus.png";
+import Home from "./components/Home";
+import Registry from "./components/Registry";
 
-interface ApiResponse {
-  chipid: number;
-  chipname: string;
-  chipuse: string;
+import {
+  createHashRouter,
+  Link,
+  Outlet,
+  RouterProvider,
+} from "react-router-dom";
+
+function Root() {
+  return (
+    <>
+      <nav>
+        <ul className="nav-ul">
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/registry">Registry</Link>
+          </li>
+        </ul>
+      </nav>
+      <main>
+        <Outlet />
+      </main>
+    </>
+  );
 }
 
 function App() {
-  const [count, setCount] = useState<number>(0);
-  const [data, setData] = useState<ApiResponse[] | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  const router = createHashRouter([
+    {
+      children: [
+        { element: <Home />, path: "/" },
+        { element: <Registry />, path: "/registry" },
+      ],
+      element: <Root />,
+    },
+  ]);
 
-  const setDataCallback = useCallback((data: ApiResponse[] | null) => {
-    setData(data);
-    console.log("data", data);
-  }, []);
-
-  useEffect(() => {
-    axios
-      .get("/api")
-      .then((response) => {
-        setDataCallback(response.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-        setLoading(false);
-      });
-  }, [setDataCallback]);
-
-  return (
-    <>
-      <h1>Robomechanexus</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
-      <p>Robot mechatronics workshop</p>
-      <div className="chip-of-the-day">
-        {loading ? (
-          <p>Loading...</p>
-        ) : (
-          data && (
-            <div>
-              <h2>Chip of the day:</h2>
-              <p>Name: {data[2].chipname}</p>
-              <p>Use: {data[2].chipuse}</p>
-            </div>
-          )
-        )}
-      </div>
-      <img src={robot} alt="Robot" />
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
