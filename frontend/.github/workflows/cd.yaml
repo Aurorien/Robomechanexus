@@ -1,15 +1,15 @@
-# .github/workflows/ci.yml
-
 on:
   push:
     branches: [main]
 
 jobs:
-  ci:
+  cd:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Deploy
+        env:
+          RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
         run: |
-          curl "https://api.render.com/deploy/srv-cl17900p2gis73d8v5b0?key=4B7pkSCJ98A"
+          curl -X POST $RENDER_DEPLOY_HOOK
