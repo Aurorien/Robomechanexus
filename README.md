@@ -1,3 +1,1 @@
-Published website on cloud service Render:
-
-https://robomechanexus.onrender.com/
+Published on cloud service Render
