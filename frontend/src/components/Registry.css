@@ -23,6 +23,10 @@ label {
   background-color: rgb(20, 20, 20);
 }
 
+input {
+  margin-left: 4px;
+}
+
 li {
   color: aliceblue;
   background-color: black;
