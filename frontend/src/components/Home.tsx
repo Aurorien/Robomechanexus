@@ -39,7 +39,7 @@ function Home() {
         </div>
       </div>
       <div className="home-wrapper">
-        <div className="chip-of-the-day">
+        {/* <div className="chip-of-the-day">
           {loading ? (
             <p>Loading...</p>
           ) : (
@@ -51,6 +51,21 @@ function Home() {
               </div>
             )
           )}
+        </div> */}
+        <div className="chip-of-the-day">
+          <div>
+            <h2>Chip of the day</h2>
+            <div className="cotd-desc-ctn">
+              <div className="cotd-desc cotd-labels">
+                <p>Name:</p>
+                <p>Use:</p>
+              </div>
+              <div className="cotd-desc cotd-desc-text">
+                <p>Plantray</p>
+                <p>plantlife perspective</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>

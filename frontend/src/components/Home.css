@@ -3,11 +3,11 @@
   background-image: url(../assets/Robomechanexus.png);
   background-repeat: no-repeat;
   width: 100%;
+  color: #b5ecf8;
 }
 
 .home-title {
   line-height: 1.1;
-  color: #c2d7e3;
   text-shadow: 5px 5px 10px #030303, -5px -5px 10px #020202;
   background-color: rgb(8, 28, 44, 0.95);
   border-color: rgb(64, 104, 139, 0.8);
@@ -17,20 +17,99 @@
 }
 
 .chip-of-the-day {
-  background-color: #030303;
+  background-color: #051220;
   border-radius: 20%;
-  padding: 10px 40px;
+  padding: 40px 42px 52px 40px;
+  width: 300px;
 }
 
 .chip-of-the-day p {
-  background-color: rgb(128, 255, 212, 0.8);
-  border-radius: 100%;
-  color: #000000;
-  padding: 10px;
+  padding: 3px;
   width: 100%;
+  margin: 0;
 }
 
-.chip-of-the-day,
+.chip-of-the-day h2 {
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.cotd-desc-ctn {
+  display: flex;
+}
+
+.cotd-labels {
+  position: relative;
+}
+
+.cotd-labels p {
+  background:
+  /* Top border gradient that starts 15px from left */ linear-gradient(
+        to right,
+        transparent 7px,
+        #acf0ff 15px,
+        #2ca1b3 100%
+      )
+      0 0/100% 1px no-repeat,
+    /* Main background */ linear-gradient(to right, #233771, #051220);
+  color: #acf0ff;
+  position: relative;
+  text-align: end;
+  z-index: 1;
+  width: 70px;
+  padding-right: 10px;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+  border-image: linear-gradient(to right, #acbeff, #2ca1b3) 1;
+  border-left: none;
+  z-index: 10;
+}
+
+.cotd-labels p::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  left: 0;
+  width: 10px;
+  margin-top: 1px;
+  background: linear-gradient(to right, #233771, #23377100);
+  border: 1px solid #acf0ff;
+  border-left: 2px solid #4780ac;
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
+
+  z-index: -1;
+}
+
+.cotd-labels p::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 40%;
+  left: 0;
+  width: 10px;
+  background-color: #051220;
+  border-right: 2px solid #acf0ff;
+  border-top: none;
+  transform: skewX(-40deg);
+  transform-origin: top left;
+  z-index: -1;
+}
+
+.cotd-desc p {
+  margin-bottom: 8px;
+  box-shadow: inset 0 0 6px rgba(172, 240, 255, 0.3);
+}
+
+.cotd-desc-text p {
+  text-align: left;
+  border: 1px solid #2ca1b3;
+  border-left: 1px solid #051220;
+  padding: 2px 3px 3px 5px;
+}
+
 .home-title {
   margin-bottom: 30px;
 }

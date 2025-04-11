@@ -1,5 +1,6 @@
 a {
-  color: rgb(212, 212, 247);
+  /* color: rgb(212, 212, 247); */
+  color: #c2edf6;
   text-decoration: none;
 }
 
@@ -11,5 +12,5 @@ a {
 .nav-ul {
   display: flex;
   justify-content: space-between;
-  padding: 0 100px 0 100px;
+  padding: 0 100px;
 }
