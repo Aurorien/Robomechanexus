@@ -1,27 +1,13 @@
-import "./App.css";
 import Home from "./components/Home";
 import Registry from "./components/Registry";
+import NavBar from "./components/NavBar";
 
-import {
-  createHashRouter,
-  Link,
-  Outlet,
-  RouterProvider,
-} from "react-router-dom";
+import { createHashRouter, Outlet, RouterProvider } from "react-router-dom";
 
 function Root() {
   return (
     <>
-      <nav>
-        <ul className="nav-ul">
-          <li className="nav-li">
-            <Link to="/">Home</Link>
-          </li>
-          <li className="nav-li">
-            <Link to="/registry">Registry</Link>
-          </li>
-        </ul>
-      </nav>
+      <NavBar />
       <main>
         <Outlet />
       </main>
