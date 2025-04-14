@@ -1,5 +1,5 @@
-import Home from "./components/Home";
-import Registry from "./components/Registry";
+import Home from "./routes/home/Home";
+import Registry from "./routes/registry/Registry";
 import NavBar from "./components/NavBar";
 
 import { createHashRouter, Outlet, RouterProvider } from "react-router-dom";
