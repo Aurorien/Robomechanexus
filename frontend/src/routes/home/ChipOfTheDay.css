@@ -1,22 +1,6 @@
-#root {
-  text-align: center;
-  background-image: url(../assets/Robomechanexus.png);
-  background-repeat: no-repeat;
-  width: 100%;
-  color: #b5ecf8;
-}
-
-.home-title {
-  line-height: 1.1;
-  text-shadow: 5px 5px 10px #030303, -5px -5px 10px #020202;
-  background-color: rgb(8, 28, 44, 0.95);
-  border-color: rgb(64, 104, 139, 0.8);
-  border-radius: 20%;
-  border-style: dashed;
-  padding: 5px 175px 12px 175px;
-}
-
 .chip-of-the-day {
+  display: flex;
+  justify-content: center;
   background-color: #051220;
   border-radius: 20%;
   padding: 40px 42px 52px 40px;
@@ -36,6 +20,12 @@
 
 .cotd-desc-ctn {
   display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cotd-desc-key-ctn {
+  display: flex;
 }
 
 .cotd-labels {
@@ -52,13 +42,12 @@
       )
       0 0/100% 1px no-repeat,
     /* Main background */ linear-gradient(to right, #233771, #051220);
-  color: #acf0ff;
+  color: #5bc5fa;
   position: relative;
   text-align: end;
   z-index: 1;
   width: 70px;
   padding-right: 10px;
-  border-right: 1px solid;
   border-bottom: 1px solid;
   border-image: linear-gradient(to right, #acbeff, #2ca1b3) 1;
   border-left: none;
@@ -79,7 +68,6 @@
   border-right: none;
   border-top: none;
   border-bottom: none;
-
   z-index: -1;
 }
 
@@ -99,27 +87,12 @@
 }
 
 .cotd-desc p {
-  margin-bottom: 8px;
   box-shadow: inset 0 0 6px rgba(172, 240, 255, 0.3);
 }
 
 .cotd-desc-text p {
+  width: 180px;
   text-align: left;
   border: 1px solid #2ca1b3;
-  border-left: 1px solid #051220;
   padding: 2px 3px 3px 5px;
-}
-
-.home-title {
-  margin-bottom: 30px;
-}
-
-.chip-of-the-day,
-.home-wrapper {
-  display: flex;
-  justify-content: center;
-}
-
-img {
-  width: 50%;
 }

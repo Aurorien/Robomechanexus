@@ -1,0 +1,26 @@
+#root {
+  text-align: center;
+  background-image: url(../../assets/Robomechanexus.png);
+  background-repeat: no-repeat;
+  width: 100%;
+  color: #b5ecf8;
+}
+
+.home-title {
+  line-height: 1.1;
+  text-shadow: 5px 5px 10px #030303, -5px -5px 10px #020202;
+  background-color: rgba(8, 27, 43, 0.95);
+  border-color: rgb(64, 104, 139, 0.8);
+  border-radius: 20%;
+  border-style: dashed;
+  padding: 5px 175px 12px 175px;
+}
+
+.home-title {
+  margin-bottom: 30px;
+}
+
+.home-wrapper {
+  display: flex;
+  justify-content: center;
+}
