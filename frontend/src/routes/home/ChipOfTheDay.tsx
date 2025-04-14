@@ -38,7 +38,7 @@ function ChipOfTheDay() {
                   <p>Name:</p>
                 </div>
                 <div className="cotd-desc cotd-desc-text">
-                  <p>{data[3].chip_name}</p>
+                  <p>{data[2].chip_name}</p>
                 </div>
               </div>
               <div className="cotd-desc-key-ctn">
@@ -46,7 +46,7 @@ function ChipOfTheDay() {
                   <p>Use:</p>
                 </div>
                 <div className="cotd-desc cotd-desc-text">
-                  <p>{data[3].chip_use}</p>
+                  <p>{data[2].chip_use}</p>
                 </div>
               </div>
               <div className="cotd-desc-key-ctn">
@@ -54,7 +54,7 @@ function ChipOfTheDay() {
                   <p>Type:</p>
                 </div>
                 <div className="cotd-desc cotd-desc-text">
-                  <p>{data[3].item_type_name}</p>
+                  <p>{data[2].item_type_name}</p>
                 </div>
               </div>
             </div>
