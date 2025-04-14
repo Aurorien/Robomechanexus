@@ -17,6 +17,10 @@
   text-rendering: optimizeLegibility;
 }
 
+a {
+  text-decoration: none;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -46,6 +50,40 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-height: 520px;
+  width: 88%;
+}
+
+input {
+  display: block;
+  margin-left: 4px;
+  width: 150px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+legend {
+  font-size: 1.5rem;
+  font-weight: bold;
+  width: auto;
+  margin: 0 auto;
+}
+
 ul {
   list-style-type: none;
+}
+
+span {
+  margin-left: 18px;
 }
