@@ -1,0 +1,55 @@
+.nav-button {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+}
+
+.octagon-outer {
+  fill: url(#buttonFill);
+  stroke: #446d87;
+
+  stroke: #080716;
+  stroke-width: 3;
+  filter: url(#insetGlow);
+  transition: stroke 0.3s ease;
+}
+
+.octagon-inner {
+  fill: transparent;
+  stroke: hsl(190, 100%, 78%);
+  stroke-width: 1;
+  opacity: 0.7;
+  filter: url(#insetGlow);
+  transition: stroke 0.3s ease, opacity 0.3s ease;
+}
+
+.button-text {
+  fill: #b5ecf8;
+  font-weight: bold;
+  font-size: 16px;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  transition: fill 0.3s ease;
+}
+
+.nav-button:hover .octagon-outer {
+  stroke: #0c3341;
+}
+
+.nav-button:hover .octagon-inner {
+  stroke: #bfcdd2;
+  opacity: 0.9;
+}
+
+.nav-button:hover .button-text {
+  fill: #e9f4f9;
+}
+
+@media (forced-colors: active) {
+  .nav-button:focus {
+    outline: 3px solid CanvasText;
+  }
+}
