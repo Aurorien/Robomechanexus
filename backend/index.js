@@ -31,7 +31,7 @@ app.use(express.json());
 app.get("/api", async (_request, response) => {
   try {
     const sql =
-      "SELECT chip.chipId, chip.chipName, chip.chipUse, item_type.itemTypeName FROM chip INNER JOIN item_type ON chip.chipItemTypeId=item_type.itemTypeId ";
+      "SELECT c.chip_id, c.chip_name, c.chip_use, it.item_type_name FROM chip c INNER JOIN item_type it ON c.chip_item_type_id=it.item_type_id ";
     const { rows } = await pool.query(sql);
     response.send(rows);
   } catch (error) {
@@ -50,16 +50,16 @@ app.post("/api/post", async (_request, response) => {
 
     if (type) {
       const insertItemTypeQuery =
-        "INSERT INTO item_type (itemTypeName) VALUES ($1) RETURNING itemTypeId";
+        "INSERT INTO item_type (item_type_name) VALUES ($1) RETURNING item_type_id";
       const typeValues = [type];
 
       const { rows } = await pool.query(insertItemTypeQuery, typeValues);
-      const newItemTypeId = rows[0].itemtypeid;
+      const newitemtypeid = rows[0].item_type_id;
 
       if (name && use) {
         const insertChipQuery =
-          "INSERT INTO chip (chipName, chipUse, chipItemTypeId) VALUES ($1, $2, $3)";
-        const chipValues = [name, use, newItemTypeId];
+          "INSERT INTO chip (chip_name, chip_use, chip_item_type_id) VALUES ($1, $2, $3)";
+        const chipValues = [name, use, newitemtypeid];
         await pool.query(insertChipQuery, chipValues);
       }
     }
