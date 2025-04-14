@@ -3,14 +3,8 @@ import "./Registry.css";
 import axios from "axios";
 import robot from "../../assets/RobotAtMechanexus.png";
 import AddChip from "./AddChip";
+import { ApiResponse } from "../../utils/interfaces";
 // import ChipTable from "./ChipTable";
-
-interface ApiResponse {
-  chip_id: number;
-  chip_name: string;
-  chip_use: string;
-  item_type_name: string;
-}
 
 function Home() {
   const [data, setData] = useState<ApiResponse[] | null>(null),

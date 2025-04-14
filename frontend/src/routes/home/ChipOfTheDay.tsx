@@ -1,13 +1,7 @@
 import axios from "axios";
 import { useState, useCallback, useEffect } from "react";
 import "./ChipOfTheDay.css";
-
-interface ApiResponse {
-  chip_id: number;
-  chip_name: string;
-  chip_use: string;
-  item_type_name: string;
-}
+import { ApiResponse } from "../../utils/interfaces";
 
 function ChipOfTheDay() {
   const [data, setData] = useState<ApiResponse[] | null>(null);
