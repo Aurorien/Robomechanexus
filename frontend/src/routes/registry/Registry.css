@@ -1,0 +1,17 @@
+.registry {
+  display: flex;
+  background-color: rgb(16, 31, 41, 0.8);
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  margin-bottom: 0px;
+}
+
+.registry-h2 {
+  margin: 25px 0 10px 0;
+}
+
+.registry-wrapper {
+  display: flex;
+  justify-content: center;
+}
