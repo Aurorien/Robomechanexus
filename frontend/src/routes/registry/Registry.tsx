@@ -4,11 +4,14 @@ import axios from "axios";
 import robot from "../../assets/RobotAtMechanexus.png";
 import AddChip from "./AddChip";
 import { ApiResponse } from "../../utils/interfaces";
-// import ChipTable from "./ChipTable";
+// import ChipTablePerformant from "./ChipTablePerformant";
 
 function Home() {
   const [data, setData] = useState<ApiResponse[] | null>(null),
     [isLoading, setIsLoading] = useState<boolean>(true);
+
+  console.log(data);
+  console.log(isLoading);
 
   const setDataCallback = useCallback((data: ApiResponse[] | null) => {
     setData(data);
@@ -49,7 +52,7 @@ function Home() {
             <h1>Registry</h1>
             <AddChip onAddSuccess={fetchDataAndReload} />
             <h2 className="registry-h2">Registered chips</h2>
-            {/* <ChipTable data={data} isLoading={isLoading}/> */}
+            {/* <ChipTablePerformant /> */}
             <img src={robot} alt="Robot" />
           </div>
         </div>
