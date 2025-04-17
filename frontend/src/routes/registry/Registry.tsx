@@ -3,17 +3,17 @@ import "./Registry.css";
 import axios from "axios";
 import robot from "../../assets/RobotAtMechanexus.png";
 import AddChip from "./AddChip";
-import { ApiResponse } from "../../utils/interfaces";
-// import ChipTablePerformant from "./ChipTablePerformant";
+import { ChipData } from "../../utils/interfaces";
+import ChipTable from "./ChipTable";
 
 function Home() {
-  const [data, setData] = useState<ApiResponse[] | null>(null),
+  const [data, setData] = useState<ChipData[] | null>(null),
     [isLoading, setIsLoading] = useState<boolean>(true);
 
   console.log(data);
   console.log(isLoading);
 
-  const setDataCallback = useCallback((data: ApiResponse[] | null) => {
+  const setDataCallback = useCallback((data: ChipData[] | null) => {
     setData(data);
     console.log("Registry data", data);
   }, []);
@@ -51,8 +51,7 @@ function Home() {
           <div className="registry">
             <h1>Registry</h1>
             <AddChip onAddSuccess={fetchDataAndReload} />
-            <h2 className="registry-h2">Registered chips</h2>
-            {/* <ChipTablePerformant /> */}
+            {data && <ChipTable data={data} />}
             <img src={robot} alt="Robot" />
           </div>
         </div>
