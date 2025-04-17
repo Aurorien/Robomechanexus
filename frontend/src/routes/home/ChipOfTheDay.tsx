@@ -1,13 +1,13 @@
 import axios from "axios";
 import { useState, useCallback, useEffect } from "react";
 import "./ChipOfTheDay.css";
-import { ApiResponse } from "../../utils/interfaces";
+import { ChipData } from "../../utils/interfaces";
 
 function ChipOfTheDay() {
-  const [data, setData] = useState<ApiResponse[] | null>(null);
+  const [data, setData] = useState<ChipData[] | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
-  const setDataCallback = useCallback((data: ApiResponse[] | null) => {
+  const setDataCallback = useCallback((data: ChipData[] | null) => {
     setData(data);
     console.log("data", data);
   }, []);

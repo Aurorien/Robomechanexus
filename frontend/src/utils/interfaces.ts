@@ -1,4 +1,4 @@
-export interface ApiResponse {
+export interface ChipData {
   chip_id: number;
   chip_name: string;
   chip_use: string;
