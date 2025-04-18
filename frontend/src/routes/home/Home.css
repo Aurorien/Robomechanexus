@@ -3,5 +3,5 @@
   background-image: url(../../assets/Robomechanexus.png);
   background-repeat: no-repeat;
   width: 100%;
-  color: #b5ecf8;
+  color: var(--text);
 }

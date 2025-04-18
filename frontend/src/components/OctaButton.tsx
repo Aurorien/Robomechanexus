@@ -28,8 +28,8 @@ function OctaButton({ text, linkPath }: OctaButtonProps) {
               result="shadowDiff"
             />
             <feFlood
-              flood-color="#446d87"
-              flood-opacity="0.9"
+              flood-color="var(--blue-gradient)"
+              flood-opacity="0.5"
               result="glowColor"
             />
             <feComposite
@@ -42,8 +42,8 @@ function OctaButton({ text, linkPath }: OctaButtonProps) {
           </filter>
 
           <linearGradient id="buttonFill" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stop-color="#0a3151" />
-            <stop offset="100%" stop-color="#081d2e" />
+            <stop offset="0%" stop-color="var(--blue-grey)" />
+            <stop offset="100%" stop-color="var(--blue-dark)" />
           </linearGradient>
         </defs>
 

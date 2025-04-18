@@ -39,4 +39,5 @@
   gap: 7px;
   align-items: end;
   padding-right: 3px;
+  color: var(--blue-dark);
 }

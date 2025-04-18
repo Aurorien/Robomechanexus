@@ -1,8 +1,8 @@
 .logo-ctn {
   line-height: 1.1;
-  text-shadow: 5px 5px 10px #030303, -5px -5px 10px #020202;
-  background-color: rgba(8, 27, 43, 0.95);
-  border-color: rgb(64, 104, 139, 0.8);
+  text-shadow: 5px 5px 10px var(--black), -5px -5px 10px var(--black);
+  background-color: var(--logo-bg);
+  border-color: var(--logo-border);
   border-radius: 20%;
   border-style: dashed;
   padding: 5px 175px 12px 175px;

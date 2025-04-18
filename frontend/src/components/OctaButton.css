@@ -9,9 +9,7 @@
 
 .octagon-outer {
   fill: url(#buttonFill);
-  stroke: #446d87;
-
-  stroke: #080716;
+  stroke: var(--blue-grey);
   stroke-width: 3;
   filter: url(#insetGlow);
   transition: stroke 0.3s ease;
@@ -19,15 +17,17 @@
 
 .octagon-inner {
   fill: transparent;
-  stroke: hsl(190, 100%, 78%);
+  stroke: var(--turquoise-dark);
   stroke-width: 1;
   opacity: 0.7;
   filter: url(#insetGlow);
   transition: stroke 0.3s ease, opacity 0.3s ease;
+  color: var(--panel-bg);
+  color: var(--blue-dark);
 }
 
 .button-text {
-  fill: #b5ecf8;
+  fill: var(--text);
   font-weight: bold;
   font-size: 16px;
   text-anchor: middle;
@@ -36,16 +36,16 @@
 }
 
 .nav-button:hover .octagon-outer {
-  stroke: #0c3341;
+  stroke: var(--panel-bg);
 }
 
 .nav-button:hover .octagon-inner {
-  stroke: #bfcdd2;
+  stroke: var(--turquoise-dark);
   opacity: 0.9;
 }
 
 .nav-button:hover .button-text {
-  fill: #e9f4f9;
+  fill: var(--text-light);
 }
 
 @media (forced-colors: active) {

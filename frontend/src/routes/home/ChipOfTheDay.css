@@ -1,8 +1,10 @@
 .chip-of-the-day {
   display: flex;
   justify-content: center;
-  background-color: #051220;
-  border-radius: 20%;
+  background-color: var(--blue-dark);
+  box-shadow: inset 0 0 16px var(--logo-bg), 0 0 16px var(--blue-dark);
+  border-radius: 6px;
+
   padding: 40px 42px 52px 40px;
   width: 300px;
 }
@@ -37,19 +39,20 @@
   /* Top border gradient that starts 15px from left */ linear-gradient(
         to right,
         transparent 7px,
-        #acf0ff 15px,
-        #2ca1b3 100%
+        var(--turquoise-light) 15px,
+        var(--turquoise) 100%
       )
       0 0/100% 1px no-repeat,
-    /* Main background */ linear-gradient(to right, #233771, #051220);
-  color: #5bc5fa;
+    /* Main background */
+      linear-gradient(to right, var(--blue-gradient), var(--blue-dark));
+  color: var(--primary);
   position: relative;
   text-align: end;
   z-index: 1;
   width: 70px;
   padding-right: 10px;
   border-bottom: 1px solid;
-  border-image: linear-gradient(to right, #acbeff, #2ca1b3) 1;
+  border-image: linear-gradient(to right, var(--primary), var(--turquoise)) 1;
   border-left: none;
   z-index: 10;
 }
@@ -62,9 +65,9 @@
   left: 0;
   width: 10px;
   margin-top: 1px;
-  background: linear-gradient(to right, #233771, #23377100);
-  border: 1px solid #acf0ff;
-  border-left: 2px solid #4780ac;
+  background: linear-gradient(to right, var(--blue-gradient), transparent);
+  border: 1px solid var(--turquoise-light);
+  border-left: 2px solid var(--accent);
   border-right: none;
   border-top: none;
   border-bottom: none;
@@ -78,8 +81,8 @@
   height: 40%;
   left: 0;
   width: 10px;
-  background-color: #051220;
-  border-right: 2px solid #acf0ff;
+  background-color: var(--blue-dark);
+  border-right: 2px solid var(--turquoise-light);
   border-top: none;
   transform: skewX(-40deg);
   transform-origin: top left;
@@ -87,12 +90,12 @@
 }
 
 .cotd-desc p {
-  box-shadow: inset 0 0 6px rgba(172, 240, 255, 0.3);
+  box-shadow: inset 0 0 6px var(--turquoise-transparent);
 }
 
 .cotd-desc-text p {
   width: 180px;
   text-align: left;
-  border: 1px solid #2ca1b3;
+  border: 1px solid var(--turquoise);
   padding: 2px 3px 3px 5px;
 }

@@ -4,13 +4,43 @@
 }
 
 :root {
+  --primary: rgb(91, 197, 250);
+  --accent: rgb(30, 174, 219);
+  --accent-button: rgb(166, 96, 12);
+
+  --black: rgba(0, 0, 0, 0.8);
+  --blue-dark: rgb(5, 18, 32);
+  --blue-grey: rgb(26, 31, 44);
+
+  --transparent-bg: rgb(16, 31, 41, 0.8);
+  --turquoise-dark: rgb(56, 77, 81);
+  --turquoise: rgb(44, 161, 179);
+  --turquoise-light: rgb(172, 240, 255);
+  --turquoise-transparent: rgba(172, 240, 255, 0.3);
+
+  --panel-bg: rgb(8, 24, 35);
+  --panel-hover: rgba(155, 135, 245, 0.1);
+  --blue-gradient: rgba(35, 55, 113, 0.9);
+  --blue-gradient-transparent: rgba(35, 55, 113, 0.5);
+
+  --text: rgb(181, 236, 248);
+  --text-light: rgb(233, 244, 249);
+  --text-dim: rgb(142, 145, 150);
+
+  --border: rgb(44, 55, 77);
+  --border-hover-button: rgb(100, 108, 255);
+  --border-transparent: rgb(44, 55, 77, 0.5);
+  --grid: rgba(158, 168, 191, 0.051);
+  --highlight: rgba(158, 185, 255, 0.102);
+  --logo-bg: rgba(8, 27, 43, 0.95);
+  --logo-border: rgba(64, 104, 139, 0.8);
+
   font-family: Electrolize, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #050713;
+  color-scheme: dark;
+  background-color: var(--blue-dark);
   background-size: 100%;
 
   font-synthesis: none;
@@ -38,12 +68,12 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #a6600c;
+  background-color: var(--accent-button);
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: var(--border-hover-button);
 }
 button:focus,
 button:focus-visible {
@@ -74,7 +104,7 @@ label {
 }
 
 legend {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: bold;
   width: auto;
   margin: 0 auto;
@@ -86,4 +116,9 @@ ul {
 
 span {
   margin-left: 18px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
 }

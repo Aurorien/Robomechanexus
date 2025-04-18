@@ -1,6 +1,6 @@
 .registry {
   display: flex;
-  background-color: rgb(16, 31, 41, 0.8);
+  background-color: var(--transparent-bg);
   flex-direction: column;
   align-items: center;
   width: 60%;

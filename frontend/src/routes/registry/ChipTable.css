@@ -2,7 +2,7 @@
   background-color: var(--panel-bg);
   border: 1px solid var(--border);
   border-radius: 6px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(155, 135, 245, 0.2);
+  box-shadow: 0 0 20px var(--black);
   color: var(--text);
   width: 100%;
   margin: 40px auto;
@@ -27,8 +27,8 @@
 .chip-table-header {
   background: linear-gradient(
     180deg,
-    rgba(8, 24, 35, 0.95) 0%,
-    rgba(35, 55, 113, 0.5) 100%
+    var(--panel-bg) 0%,
+    var(--blue-gradient-transparent) 100%
   );
   padding: 20px 20px 18px 20px;
   border-bottom: 2px solid var(--border);
@@ -40,7 +40,7 @@
   font-size: 1.3rem;
   font-weight: 600;
   letter-spacing: 1px;
-  color: var(--title);
+  color: var(--text);
   display: flex;
   flex-direction: column;
 }
@@ -73,13 +73,13 @@
 }
 
 .chip-table-table thead th {
-  color: rgb(35, 55, 113);
-  color: rgb(8, 24, 35);
+  color: var(--blue-gradient);
+  color: var(--panel-bg);
 
   background: linear-gradient(
     0deg,
-    rgb(8, 24, 35, 0.9) 0%,
-    rgba(35, 55, 113, 0.9) 100%
+    var(--panel-bg) 0%,
+    var(--blue-gradient) 100%
   );
   color: var(--primary);
   font-weight: 600;
@@ -99,7 +99,7 @@
 }
 
 .chip-table-table th:hover {
-  background-color: rgba(155, 135, 245, 0.1);
+  background-color: var(--panel-hover);
 }
 
 .th-content {
@@ -144,9 +144,7 @@
   right: 0;
   top: 0;
   height: 100%;
-  width: 4px;
-  background: rgba(155, 135, 245, 0.3);
-  opacity: 0;
+  width: 3px;
   cursor: col-resize;
   z-index: 10;
   transition: opacity 0.2s;
@@ -176,18 +174,12 @@
 .chip-table-table td {
   padding: 10px 16px;
   color: var(--text);
-  border-right: 1px solid rgba(44, 55, 77, 0.5);
+  border-right: 1px solid var(--border-transparent);
   font-size: 14px;
 }
 
 .chip-table-table td:last-child {
   border-right: none;
-}
-
-.chip-id {
-  font-family: monospace;
-  color: var(--accent);
-  font-weight: 600;
 }
 
 .chip-table-pagination {
@@ -196,27 +188,21 @@
   align-items: center;
   padding: 15px;
   border-top: 1px solid var(--border);
-  background: linear-gradient(
-    0deg,
-    rgba(8, 24, 35, 0.95) 0%,
-    rgba(9, 22, 35, 0.9) 100%
-  );
+  background: linear-gradient(0deg, var(--panel-bg) 0%, var(--blue-dark) 100%);
 }
 
 .ctp-button {
   background: linear-gradient(
     180deg,
-    rgba(8, 24, 35, 0.8) 0%,
-    rgba(9, 22, 35, 0.8) 100%
+    var(--panel-bg) 0%,
+    var(--blue-dark) 100%
   );
   border: 1px solid var(--border);
   color: var(--text);
-  padding: 6px 10px;
+  padding: 3px 8px;
   margin: 0 5px;
   cursor: pointer;
   border-radius: 3px;
-  font-family: "Rajdhani", sans-serif;
-  font-weight: 600;
   transition: all 0.2s;
   min-width: 30px;
   position: relative;
@@ -234,11 +220,11 @@
   opacity: 0.7;
 }
 
-.ctp-button:hover:not(:disabled) {
+/* .ctp-button:hover:not(:disabled) {
   background-color: rgba(155, 135, 245, 0.2);
   border-color: var(--primary);
   box-shadow: 0 0 8px rgba(155, 135, 245, 0.3);
-}
+} */
 
 .ctp-button:disabled {
   opacity: 0.5;
