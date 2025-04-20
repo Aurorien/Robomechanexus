@@ -13,7 +13,6 @@
   display: flex;
   justify-content: center;
   margin: 30px;
-  gap: 80px;
 }
 
 .add-chip-form-button {
@@ -40,4 +39,12 @@
   align-items: end;
   padding-right: 3px;
   color: var(--primary);
+}
+
+.add-chip-circuits {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  margin-left: 1px;
 }

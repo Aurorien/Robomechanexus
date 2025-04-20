@@ -1,5 +1,8 @@
 import { useState } from "react";
 import "./AddChip.css";
+import CircuitTop from "../../assets/circuits/CircuitTop";
+import CircuitMiddle from "../../assets/circuits/CircuitMiddle";
+import CircuitBottom from "../../assets/circuits/CircuitBottom";
 
 interface AddChipProps {
   onAddSuccess: () => void;
@@ -88,6 +91,12 @@ function AddChip({ onAddSuccess }: AddChipProps) {
                   aria-invalid={!formData.type}
                 />
               </div>
+            </div>
+
+            <div className="add-chip-circuits">
+              <CircuitTop color={formData.name ? "#8FF4C0" : "#388CA3"} />
+              <CircuitMiddle color={formData.use ? "#8FF4C0" : "#388CA3"} />
+              <CircuitBottom color={formData.type ? "#8FF4C0" : "#388CA3"} />
             </div>
 
             <div className="add-chip-form-button">
