@@ -94,9 +94,21 @@ function AddChip({ onAddSuccess }: AddChipProps) {
             </div>
 
             <div className="add-chip-circuits">
-              <CircuitTop color={formData.name ? "#8FF4C0" : "#388CA3"} />
-              <CircuitMiddle color={formData.use ? "#8FF4C0" : "#388CA3"} />
-              <CircuitBottom color={formData.type ? "#8FF4C0" : "#388CA3"} />
+              <CircuitTop
+                color={
+                  formData.name ? "var(--circuit-on)" : "var(--circuit-off)"
+                }
+              />
+              <CircuitMiddle
+                color={
+                  formData.use ? "var(--circuit-on)" : "var(--circuit-off)"
+                }
+              />
+              <CircuitBottom
+                color={
+                  formData.type ? "var(--circuit-on)" : "var(--circuit-off)"
+                }
+              />
             </div>
 
             <div className="add-chip-form-button">

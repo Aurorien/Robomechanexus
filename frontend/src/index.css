@@ -7,6 +7,8 @@
   --primary: rgb(91, 197, 250);
   --accent: rgb(30, 174, 219);
   --accent-button: rgb(166, 96, 12);
+  --circuit-on: #8ff4c0;
+  --circuit-off: #388ca3;
 
   --black: rgba(0, 0, 0, 0.8);
   --blue-dark: rgb(5, 18, 32);
