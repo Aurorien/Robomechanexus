@@ -7,6 +7,8 @@
   --primary: rgb(91, 197, 250);
   --accent: rgb(30, 174, 219);
   --accent-button: rgb(166, 96, 12);
+  --delete: #bc312f;
+
   --circuit-on: #8ff4c0;
   --circuit-off: #388ca3;
 
@@ -21,6 +23,7 @@
   --turquoise-transparent: rgba(172, 240, 255, 0.3);
 
   --panel-bg: rgb(8, 24, 35);
+  --panel-highlight: rgb(16, 38, 54);
   --panel-hover: rgba(155, 135, 245, 0.1);
   --blue-gradient: rgba(35, 55, 113, 0.9);
   --blue-gradient-transparent: rgba(35, 55, 113, 0.5);

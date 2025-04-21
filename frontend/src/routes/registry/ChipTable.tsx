@@ -10,12 +10,21 @@ import {
 } from "@tanstack/react-table";
 import "./ChipTable.css";
 import { ChipData } from "../../utils/interfaces";
+import DeleteIcon from "../../assets/DeleteIcon";
+import { RowData } from "@tanstack/react-table";
+
+declare module "@tanstack/react-table" {
+  interface ColumnMeta<TData extends RowData, TValue> {
+    className: string;
+  }
+}
 
 interface ChipTableProps {
   data: ChipData[];
+  onDeleteChip?: (chipId: string | number) => void;
 }
 
-const ChipTable = ({ data }: ChipTableProps) => {
+const ChipTable = ({ data, onDeleteChip }: ChipTableProps) => {
   const [sorting, setSorting] = useState<SortingState>([]);
 
   const columnHelper = createColumnHelper<ChipData>();
@@ -25,26 +34,45 @@ const ChipTable = ({ data }: ChipTableProps) => {
       columnHelper.accessor("chip_name", {
         header: "Name",
         cell: (info) => info.getValue(),
-        // size: 150,
         minSize: 10,
         enableResizing: true,
       }),
       columnHelper.accessor("chip_use", {
         header: "Use",
         cell: (info) => info.getValue(),
-        // size: 150,
         minSize: 10,
         enableResizing: true,
       }),
       columnHelper.accessor("item_type_name", {
         header: "Type",
         cell: (info) => info.getValue(),
-        // size: 150,
         minSize: 10,
         enableResizing: true,
       }),
+      columnHelper.display({
+        id: "actions",
+        header: "",
+        cell: (info) => (
+          <div
+            className="delete-icon-container"
+            onClick={() =>
+              onDeleteChip && onDeleteChip(info.row.original.chip_id)
+            }
+            style={{ cursor: "pointer" }}
+          >
+            <DeleteIcon />
+          </div>
+        ),
+        size: 20,
+        maxSize: 20,
+        minSize: 20,
+        enableResizing: false,
+        meta: {
+          className: "sticky-column",
+        },
+      }),
     ],
-    []
+    [onDeleteChip]
   );
 
   const table = useReactTable({
@@ -71,10 +99,7 @@ const ChipTable = ({ data }: ChipTableProps) => {
       </div>
 
       <div className="table-wrapper">
-        <div
-          className="resizable-table-container"
-          style={{ position: "relative" }}
-        >
+        <div className="resizable-table-container">
           <table className="chip-table-table">
             <thead>
               {table.getHeaderGroups().map((headerGroup) => (
@@ -83,14 +108,17 @@ const ChipTable = ({ data }: ChipTableProps) => {
                     <th
                       key={header.id}
                       onClick={header.column.getToggleSortingHandler()}
-                      className={
+                      className={`${
                         header.column.getIsSorted()
                           ? `sorted-${header.column.getIsSorted()}`
                           : ""
-                      }
+                      } ${
+                        header.column.columnDef.meta?.className ??
+                        "relative-column"
+                      } 
+                        `}
                       style={{
                         width: header.getSize(),
-                        position: "relative",
                       }}
                     >
                       <div className="th-content truncate-text">
@@ -114,12 +142,23 @@ const ChipTable = ({ data }: ChipTableProps) => {
               {table.getRowModel().rows.map((row) => (
                 <tr key={row.id}>
                   {row.getVisibleCells().map((cell) => (
-                    <td key={cell.id} style={{ width: cell.column.getSize() }}>
-                      <div className="truncate-text">
-                        {flexRender(
-                          cell.column.columnDef.cell,
-                          cell.getContext()
-                        )}
+                    <td
+                      key={cell.id}
+                      className={`${
+                        cell.column.columnDef.meta?.className ??
+                        "relative-column"
+                      }-td`}
+                      style={{
+                        width: cell.column.getSize(),
+                      }}
+                    >
+                      <div className="td-bg">
+                        <div className="truncate-text">
+                          {flexRender(
+                            cell.column.columnDef.cell,
+                            cell.getContext()
+                          )}
+                        </div>
                       </div>
                     </td>
                   ))}
