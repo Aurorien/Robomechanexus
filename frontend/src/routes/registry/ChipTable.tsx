@@ -14,6 +14,7 @@ import DeleteIcon from "../../assets/DeleteIcon";
 import { RowData } from "@tanstack/react-table";
 
 declare module "@tanstack/react-table" {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   interface ColumnMeta<TData extends RowData, TValue> {
     className: string;
   }
@@ -29,7 +30,7 @@ const ChipTable = ({ data, onDeleteChip }: ChipTableProps) => {
 
   const columnHelper = createColumnHelper<ChipData>();
 
-  const columns = useMemo(
+  const dataColumns = useMemo(
     () => [
       columnHelper.accessor("chip_name", {
         header: "Name",
@@ -49,30 +50,38 @@ const ChipTable = ({ data, onDeleteChip }: ChipTableProps) => {
         minSize: 10,
         enableResizing: true,
       }),
-      columnHelper.display({
-        id: "actions",
-        header: "",
-        cell: (info) => (
-          <div
-            className="delete-icon-container"
-            onClick={() =>
-              onDeleteChip && onDeleteChip(info.row.original.chip_id)
-            }
-            style={{ cursor: "pointer" }}
-          >
-            <DeleteIcon />
-          </div>
-        ),
-        size: 20,
-        maxSize: 20,
-        minSize: 20,
-        enableResizing: false,
-        meta: {
-          className: "sticky-column",
-        },
-      }),
     ],
-    [onDeleteChip]
+    [columnHelper]
+  );
+
+  const createDeleteColumn = useMemo(() => {
+    return columnHelper.display({
+      id: "actions",
+      header: "",
+      cell: (info) => (
+        <div
+          className="delete-icon-container"
+          onClick={() =>
+            onDeleteChip && onDeleteChip(info.row.original.chip_id)
+          }
+          style={{ cursor: "pointer" }}
+        >
+          <DeleteIcon />
+        </div>
+      ),
+      size: 20,
+      maxSize: 20,
+      minSize: 20,
+      enableResizing: false,
+      meta: {
+        className: "sticky-column",
+      },
+    });
+  }, [columnHelper, onDeleteChip]);
+
+  const columns = useMemo(
+    () => [...dataColumns, createDeleteColumn],
+    [dataColumns, createDeleteColumn]
   );
 
   const table = useReactTable({
