@@ -3,6 +3,7 @@ import "./AddChip.css";
 import CircuitTop from "../../assets/circuits/CircuitTop";
 import CircuitMiddle from "../../assets/circuits/CircuitMiddle";
 import CircuitBottom from "../../assets/circuits/CircuitBottom";
+import axios from "axios";
 
 interface AddChipProps {
   onAddSuccess: () => void;
@@ -26,25 +27,17 @@ function AddChip({ onAddSuccess }: AddChipProps) {
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    const jsonData = JSON.stringify(formData);
-
-    console.log("jsonData", jsonData);
-
-    fetch("/api/post", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: jsonData,
-    })
-      .then((response) => response.text())
-      .then((data) => {
-        console.log(data);
-        onAddSuccess();
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    if (formData) {
+      axios
+        .post("/api/post", formData)
+        .then((response) => {
+          console.log(response.data);
+          onAddSuccess();
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
   }
 
   const isSubmitDisabled = !(formData.name && formData.use && formData.type);

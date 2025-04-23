@@ -44,6 +44,18 @@ function Home() {
       });
   }
 
+  function onDeleteChip(chip_id: number) {
+    axios
+      .delete(`/api/delete/${chip_id}`)
+      .then((response) => {
+        console.log(response.data);
+        fetchDataAndReload();
+      })
+      .catch((error) => {
+        console.error("Error deleting data:", error);
+      });
+  }
+
   return (
     <>
       <div>
@@ -51,7 +63,7 @@ function Home() {
           <div className="registry">
             <h1>Registry</h1>
             <AddChip onAddSuccess={fetchDataAndReload} />
-            {data && <ChipTable data={data} />}
+            {data && <ChipTable data={data} onDeleteChip={onDeleteChip} />}
             <img src={robot} alt="Robot" />
           </div>
         </div>

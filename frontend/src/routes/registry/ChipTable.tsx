@@ -22,7 +22,7 @@ declare module "@tanstack/react-table" {
 
 interface ChipTableProps {
   data: ChipData[];
-  onDeleteChip?: (chipId: string | number) => void;
+  onDeleteChip?: (chipId: number) => void;
 }
 
 const ChipTable = ({ data, onDeleteChip }: ChipTableProps) => {
@@ -35,6 +35,7 @@ const ChipTable = ({ data, onDeleteChip }: ChipTableProps) => {
       columnHelper.accessor("chip_name", {
         header: "Name",
         cell: (info) => info.getValue(),
+        size: 80,
         minSize: 10,
         enableResizing: true,
       }),
@@ -47,6 +48,14 @@ const ChipTable = ({ data, onDeleteChip }: ChipTableProps) => {
       columnHelper.accessor("item_type_name", {
         header: "Type",
         cell: (info) => info.getValue(),
+        size: 80,
+        minSize: 10,
+        enableResizing: true,
+      }),
+      columnHelper.accessor("chip_id", {
+        header: "Id",
+        cell: (info) => info.getValue(),
+        size: 20,
         minSize: 10,
         enableResizing: true,
       }),
