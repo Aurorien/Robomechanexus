@@ -32,6 +32,11 @@ function AddChip({ onAddSuccess }: AddChipProps) {
         .post("/api/post", formData)
         .then((response) => {
           console.log(response.data);
+          setFormData({
+            name: "",
+            use: "",
+            type: "",
+          });
           onAddSuccess();
         })
         .catch((error) => {
