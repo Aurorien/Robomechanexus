@@ -10,9 +10,9 @@ function OctaButton({ text, linkPath }: OctaButtonProps) {
   return (
     <button className="nav-button" aria-label={text} role="button" tabIndex={0}>
       <svg
-        width="160"
+        width="120"
         height="70"
-        viewBox="0 0 160 70"
+        viewBox="0 0 120 67"
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
         focusable="false"
