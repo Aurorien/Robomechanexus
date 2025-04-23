@@ -42,10 +42,8 @@ app.get("/api", async (_request, response) => {
 
 app.post("/api/post", async (_request, response) => {
   try {
-    console.log("Received JSON data from frontend:", _request.body);
     const { name, use, type } = _request.body;
 
-    // Database transaction
     await pool.query("BEGIN");
 
     if (type) {
@@ -71,6 +69,33 @@ app.post("/api/post", async (_request, response) => {
     await pool.query("ROLLBACK");
 
     console.error("Error executing the SQL query:", error);
+    response.status(500).send("Internal Server Error");
+  }
+});
+
+app.delete("/api/delete/:id", async (_request, response) => {
+  console.log("ENTERED DELETE ENDPOINT");
+  console.log(_request);
+  try {
+    const chipId = _request.params.id;
+
+    console.log("chipId", chipId);
+
+    await pool.query("BEGIN");
+
+    const deleteChipQuery = "DELETE FROM chip WHERE chip_id = $1";
+    const chipResult = await pool.query(deleteChipQuery, [chipId]);
+
+    await pool.query("COMMIT");
+
+    if (chipResult.rowCount > 0) {
+      response.send(`Chip with ID ${chipId} successfully deleted`);
+    } else {
+      response.status(404).send(`No chip found with ID ${chipId}`);
+    }
+  } catch (error) {
+    await pool.query("ROLLBACK");
+    console.error("Error executing the delete query:", error);
     response.status(500).send("Internal Server Error");
   }
 });
