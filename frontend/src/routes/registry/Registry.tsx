@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import "./Registry.css";
 import axios from "axios";
-import robot from "../../assets/RobotAtMechanexus.png";
+// import robot from "../../assets/RobotAtMechanexus.png";
 import AddChip from "./AddChip";
 import { ChipData } from "../../utils/interfaces";
 import ChipTable from "./ChipTable";
@@ -64,7 +64,7 @@ function Home() {
             <h1>Registry</h1>
             <AddChip onAddSuccess={fetchDataAndReload} />
             {data && <ChipTable data={data} onDeleteChip={onDeleteChip} />}
-            <img src={robot} alt="Robot" />
+            {/* <img className="robot" src={robot} alt="Robot" /> */}
           </div>
         </div>
       </div>

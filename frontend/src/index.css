@@ -91,11 +91,6 @@ fieldset {
   padding: 0;
 }
 
-img {
-  max-height: 520px;
-  width: 88%;
-}
-
 input {
   display: block;
   margin-left: 4px;

@@ -3,8 +3,8 @@
   background-color: var(--transparent-bg);
   flex-direction: column;
   align-items: center;
-  width: 60%;
-  margin-bottom: 0px;
+  width: 60vw;
+  margin-bottom: 300px;
 }
 
 .registry-h2 {
@@ -15,3 +15,8 @@
   display: flex;
   justify-content: center;
 }
+
+/* .robot {
+  margin-top: 40px;
+  width: 56vw;
+} */
