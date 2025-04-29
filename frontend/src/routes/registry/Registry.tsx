@@ -62,8 +62,20 @@ function Home() {
         <div className="registry-wrapper">
           <div className="registry">
             <h1>Registry</h1>
-            <AddChip onAddSuccess={fetchDataAndReload} />
-            {data && <ChipTable data={data} onDeleteChip={onDeleteChip} />}
+            {data ? (
+              <>
+                <AddChip onAddSuccess={fetchDataAndReload} />
+                {data.length > 0 && (
+                  <ChipTable data={data} onDeleteChip={onDeleteChip} />
+                )}
+              </>
+            ) : isLoading ? (
+              <p className="no-data">Loading...</p>
+            ) : (
+              <p className="no-data">
+                No connection to registry, contact support.
+              </p>
+            )}
             {/* <img className="robot" src={robot} alt="Robot" /> */}
           </div>
         </div>

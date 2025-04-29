@@ -16,6 +16,11 @@
   justify-content: center;
 }
 
+.no-data {
+  margin: 0;
+  padding-bottom: 32px;
+}
+
 /* .robot {
   margin-top: 40px;
   width: 56vw;
