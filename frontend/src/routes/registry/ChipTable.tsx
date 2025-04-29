@@ -7,6 +7,7 @@ import {
   useReactTable,
   SortingState,
   getPaginationRowModel,
+  PaginationState,
 } from "@tanstack/react-table";
 import "./ChipTable.css";
 import { ChipData } from "../../utils/interfaces";
@@ -27,6 +28,10 @@ interface ChipTableProps {
 
 const ChipTable = ({ data, onDeleteChip }: ChipTableProps) => {
   const [sorting, setSorting] = useState<SortingState>([]);
+  const [pagination, setPagination] = useState<PaginationState>({
+    pageIndex: 0,
+    pageSize: 10,
+  });
 
   const columnHelper = createColumnHelper<ChipData>();
 
@@ -98,11 +103,13 @@ const ChipTable = ({ data, onDeleteChip }: ChipTableProps) => {
     columns,
     state: {
       sorting,
+      pagination,
     },
     onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    onPaginationChange: setPagination,
     columnResizeMode: "onChange",
     enableColumnResizing: true,
     debugTable: true,
