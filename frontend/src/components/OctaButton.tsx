@@ -41,10 +41,18 @@ function OctaButton({ text, linkPath }: OctaButtonProps) {
             <feComposite in="softGlow" in2="SourceGraphic" operator="over" />
           </filter>
 
-          <linearGradient id="buttonFill" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stop-color="var(--blue-grey)" />
-            <stop offset="100%" stop-color="var(--blue-dark)" />
-          </linearGradient>
+          <radialGradient
+            id="buttonFill"
+            cx="50%"
+            cy="50%"
+            r="100%"
+            fx="50%"
+            fy="50%"
+          >
+            <stop offset="0%" stopColor="var(--blue-dark)" />
+            <stop offset="80%" stopColor="var(--blue-dark)" />
+            <stop offset="100%" stopColor="var(--blue-dark-2)" />
+          </radialGradient>
         </defs>
 
         <polygon
