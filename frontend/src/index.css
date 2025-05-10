@@ -6,7 +6,8 @@
 :root {
   --primary: rgb(91, 197, 250);
   --accent: rgb(30, 174, 219);
-  --accent-button: rgb(166, 96, 12);
+  --accent-button-disabled: rgb(119, 71, 12);
+  --accent-button-enabled: #b16100;
   --delete: #bc312f;
 
   --circuit-on: #8ff4c0;
@@ -73,9 +74,12 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: var(--accent-button);
+  background-color: var(--accent-button-enabled);
   cursor: pointer;
   transition: border-color 0.25s;
+}
+button:disabled {
+  background-color: var(--accent-button-disabled);
 }
 button:hover {
   border-color: var(--border-hover-button);
