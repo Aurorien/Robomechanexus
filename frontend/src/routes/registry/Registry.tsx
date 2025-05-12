@@ -3,12 +3,16 @@ import "./Registry.css";
 import axios from "axios";
 // import robot from "../../assets/RobotAtMechanexus.png";
 import AddChip from "./AddChip";
-import { ChipData } from "../../utils/interfaces";
+import { ChipData, ModalState } from "../../utils/interfaces";
 import ChipTable from "./ChipTable";
+import Modal from "../../components/Modal";
 
-function Home() {
-  const [data, setData] = useState<ChipData[] | null>(null),
-    [isLoading, setIsLoading] = useState<boolean>(true);
+function Registry() {
+  const [data, setData] = useState<ChipData[] | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [modalState, setModalState] = useState<ModalState>("default");
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [selectedChip, setSelectedChip] = useState<ChipData | null>(null);
 
   console.log(data);
   console.log(isLoading);
@@ -45,28 +49,57 @@ function Home() {
   }
 
   function onDeleteChip(chip_id: number) {
+    setModalState("loading");
     axios
       .delete(`/api/delete/${chip_id}`)
       .then((response) => {
         console.log(response.data);
+        setModalState("success");
         fetchDataAndReload();
       })
       .catch((error) => {
+        setModalState("error");
         console.error("Error deleting data:", error);
       });
   }
-
+  const handleDeleteIconClick = useCallback((chip: ChipData) => {
+    setSelectedChip(chip);
+    setIsModalOpen(true);
+  }, []);
   return (
     <>
       <div>
         <div className="registry-wrapper">
           <div className="registry">
             <h1>Registry</h1>
-            {data ? (
+            {data && modalState ? (
               <>
                 <AddChip onAddSuccess={fetchDataAndReload} />
                 {data.length > 0 && (
-                  <ChipTable data={data} onDeleteChip={onDeleteChip} />
+                  <ChipTable
+                    data={data}
+                    onDeleteIconClick={handleDeleteIconClick}
+                  />
+                )}
+                {isModalOpen && selectedChip && (
+                  <Modal
+                    title="Delete chip"
+                    onClose={() => {
+                      setIsModalOpen(false);
+                      setModalState("default");
+                    }}
+                    primaryAction={{
+                      text: "Confirm",
+                      onClick: () => onDeleteChip(selectedChip.chip_id),
+                    }}
+                    state={modalState}
+                  >
+                    <p>
+                      Are you sure that you want to delete chip{" "}
+                      {selectedChip.chip_name}?
+                    </p>
+                    <p>Deletion is irreversible.</p>
+                  </Modal>
                 )}
               </>
             ) : isLoading ? (
@@ -84,4 +117,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Registry;

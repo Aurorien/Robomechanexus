@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, memo } from "react";
 import {
   createColumnHelper,
   flexRender,
@@ -13,6 +13,7 @@ import "./ChipTable.css";
 import { ChipData } from "../../utils/interfaces";
 import DeleteIcon from "../../assets/DeleteIcon";
 import { RowData } from "@tanstack/react-table";
+// import { text } from "stream/consumers";
 
 declare module "@tanstack/react-table" {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -23,10 +24,10 @@ declare module "@tanstack/react-table" {
 
 interface ChipTableProps {
   data: ChipData[];
-  onDeleteChip?: (chipId: number) => void;
+  onDeleteIconClick: (chip: ChipData) => void;
 }
 
-const ChipTable = ({ data, onDeleteChip }: ChipTableProps) => {
+const ChipTableComponent = ({ data, onDeleteIconClick }: ChipTableProps) => {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: 0,
@@ -75,9 +76,12 @@ const ChipTable = ({ data, onDeleteChip }: ChipTableProps) => {
       cell: (info) => (
         <div
           className="delete-icon-container"
-          onClick={() =>
-            onDeleteChip && onDeleteChip(info.row.original.chip_id)
-          }
+          // onClick={() =>
+          //   onDeleteChip && onDeleteChip(info.row.original.chip_id)
+          // }
+          onClick={() => {
+            onDeleteIconClick(info.row.original);
+          }}
           style={{ cursor: "pointer" }}
         >
           <DeleteIcon />
@@ -91,7 +95,7 @@ const ChipTable = ({ data, onDeleteChip }: ChipTableProps) => {
         className: "sticky-column",
       },
     });
-  }, [columnHelper, onDeleteChip]);
+  }, [columnHelper]);
 
   const columns = useMemo(
     () => [...dataColumns, createDeleteColumn],
@@ -118,120 +122,123 @@ const ChipTable = ({ data, onDeleteChip }: ChipTableProps) => {
   });
 
   return (
-    <div className="chip-table-table-container">
-      <div className="chip-table-header">
-        <h2 className="chip-table-title">Registered chips</h2>
-      </div>
+    <>
+      <div className="chip-table-table-container">
+        <div className="chip-table-header">
+          <h2 className="chip-table-title">Registered chips</h2>
+        </div>
 
-      <div className="table-wrapper">
-        <div className="resizable-table-container">
-          <table className="chip-table-table">
-            <thead>
-              {table.getHeaderGroups().map((headerGroup) => (
-                <tr key={headerGroup.id}>
-                  {headerGroup.headers.map((header) => (
-                    <th
-                      key={header.id}
-                      onClick={header.column.getToggleSortingHandler()}
-                      className={`${
-                        header.column.getIsSorted()
-                          ? `sorted-${header.column.getIsSorted()}`
-                          : ""
-                      } ${
-                        header.column.columnDef.meta?.className ??
-                        "relative-column"
-                      } 
+        <div className="table-wrapper">
+          <div className="resizable-table-container">
+            <table className="chip-table-table">
+              <thead>
+                {table.getHeaderGroups().map((headerGroup) => (
+                  <tr key={headerGroup.id}>
+                    {headerGroup.headers.map((header) => (
+                      <th
+                        key={header.id}
+                        onClick={header.column.getToggleSortingHandler()}
+                        className={`${
+                          header.column.getIsSorted()
+                            ? `sorted-${header.column.getIsSorted()}`
+                            : ""
+                        } ${
+                          header.column.columnDef.meta?.className ??
+                          "relative-column"
+                        } 
                         `}
-                      style={{
-                        width: header.getSize(),
-                      }}
-                    >
-                      <div className="th-content truncate-text">
-                        {flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
-                        <span className="sort-indicator"></span>
-                      </div>
-                      <div
-                        className="resizer"
-                        onMouseDown={header.getResizeHandler()}
-                        onTouchStart={header.getResizeHandler()}
-                      />
-                    </th>
-                  ))}
-                </tr>
-              ))}
-            </thead>
-            <tbody>
-              {table.getRowModel().rows.map((row) => (
-                <tr key={row.id}>
-                  {row.getVisibleCells().map((cell) => (
-                    <td
-                      key={cell.id}
-                      className={`${
-                        cell.column.columnDef.meta?.className ??
-                        "relative-column"
-                      }-td`}
-                      style={{
-                        width: cell.column.getSize(),
-                      }}
-                    >
-                      <div className="td-bg">
-                        <div className="truncate-text">
+                        style={{
+                          width: header.getSize(),
+                        }}
+                      >
+                        <div className="th-content truncate-text">
                           {flexRender(
-                            cell.column.columnDef.cell,
-                            cell.getContext()
+                            header.column.columnDef.header,
+                            header.getContext()
                           )}
+                          <span className="sort-indicator"></span>
                         </div>
-                      </div>
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                        <div
+                          className="resizer"
+                          onMouseDown={header.getResizeHandler()}
+                          onTouchStart={header.getResizeHandler()}
+                        />
+                      </th>
+                    ))}
+                  </tr>
+                ))}
+              </thead>
+              <tbody>
+                {table.getRowModel().rows.map((row) => (
+                  <tr key={row.id}>
+                    {row.getVisibleCells().map((cell) => (
+                      <td
+                        key={cell.id}
+                        className={`${
+                          cell.column.columnDef.meta?.className ??
+                          "relative-column"
+                        }-td`}
+                        style={{
+                          width: cell.column.getSize(),
+                        }}
+                      >
+                        <div className="td-bg">
+                          <div className="truncate-text">
+                            {flexRender(
+                              cell.column.columnDef.cell,
+                              cell.getContext()
+                            )}
+                          </div>
+                        </div>
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
 
-      <div className="chip-table-pagination">
-        <button
-          className="ctp-button"
-          onClick={() => table.setPageIndex(0)}
-          disabled={!table.getCanPreviousPage()}
-        >
-          &lt;&lt;
-        </button>
-        <button
-          className="ctp-button"
-          onClick={() => table.previousPage()}
-          disabled={!table.getCanPreviousPage()}
-        >
-          &lt;
-        </button>
-        <div className="page-info">
-          <span>
-            Page {table.getState().pagination.pageIndex + 1} of{" "}
-            {table.getPageCount()}
-          </span>
+        <div className="chip-table-pagination">
+          <button
+            className="ctp-button"
+            onClick={() => table.setPageIndex(0)}
+            disabled={!table.getCanPreviousPage()}
+          >
+            &lt;&lt;
+          </button>
+          <button
+            className="ctp-button"
+            onClick={() => table.previousPage()}
+            disabled={!table.getCanPreviousPage()}
+          >
+            &lt;
+          </button>
+          <div className="page-info">
+            <span>
+              Page {table.getState().pagination.pageIndex + 1} of{" "}
+              {table.getPageCount()}
+            </span>
+          </div>
+          <button
+            className="ctp-button"
+            onClick={() => table.nextPage()}
+            disabled={!table.getCanNextPage()}
+          >
+            &gt;
+          </button>
+          <button
+            className="ctp-button"
+            onClick={() => table.setPageIndex(table.getPageCount() - 1)}
+            disabled={!table.getCanNextPage()}
+          >
+            &gt;&gt;
+          </button>
         </div>
-        <button
-          className="ctp-button"
-          onClick={() => table.nextPage()}
-          disabled={!table.getCanNextPage()}
-        >
-          &gt;
-        </button>
-        <button
-          className="ctp-button"
-          onClick={() => table.setPageIndex(table.getPageCount() - 1)}
-          disabled={!table.getCanNextPage()}
-        >
-          &gt;&gt;
-        </button>
       </div>
-    </div>
+    </>
   );
 };
+const ChipTable = memo(ChipTableComponent);
 
 export default ChipTable;

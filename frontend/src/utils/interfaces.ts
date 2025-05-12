@@ -4,3 +4,5 @@ export interface ChipData {
   chip_use: string;
   item_type_name: string;
 }
+
+export type ModalState = "default" | "loading" | "success" | "error";
