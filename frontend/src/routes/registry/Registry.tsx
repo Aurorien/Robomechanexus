@@ -24,7 +24,7 @@ function Registry() {
 
   useEffect(() => {
     axios
-      .get("/api")
+      .get("/api/chips")
       .then((response) => {
         setDataCallback(response.data);
         setIsLoading(false);
@@ -37,7 +37,7 @@ function Registry() {
 
   function fetchDataAndReload() {
     axios
-      .get("/api")
+      .get("/api/chips")
       .then((response) => {
         setDataCallback(response.data);
         setIsLoading(false);
@@ -51,7 +51,7 @@ function Registry() {
   function onDeleteChip(chip_id: number) {
     setModalState("loading");
     axios
-      .delete(`/api/delete/${chip_id}`)
+      .delete(`/api/chips/${chip_id}`)
       .then((response) => {
         console.log(response.data);
         setModalState("success");

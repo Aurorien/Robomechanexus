@@ -14,7 +14,7 @@ function ChipOfTheDay() {
 
   useEffect(() => {
     axios
-      .get("/api")
+      .get("/api/chips")
       .then((response) => {
         setDataCallback(response.data);
         setLoading(false);

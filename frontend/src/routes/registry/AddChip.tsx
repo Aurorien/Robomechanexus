@@ -29,7 +29,7 @@ function AddChip({ onAddSuccess }: AddChipProps) {
 
     if (formData) {
       axios
-        .post("/api/post", formData)
+        .post("/api/chips", formData)
         .then((response) => {
           console.log(response.data);
           setFormData({
